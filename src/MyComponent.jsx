@@ -1,49 +1,22 @@
-// import { Fragment } from 'react';
-// const getValue = () => 123;
-// export const MyComponent = () => {
-// 	const className = 'divElement';
-// 	const tagName = 'div';
-// 	return (
-// 		<Fragment>
-// 			<label>Value:</label>
-// 			<div className={tagName + className} style={{ width: '100px', marginTop: '20px' }}>
-// 				{getValue()}
-// 			</div>
-// 		</Fragment>
-// 	);
-// };
-import PropTypes from 'prop-types';
 import { useState } from 'react';
 
-// function getTimeFromDate(date) {
-// 	return date.toISOString().substring(11, 19);
-// }
+export const MyComponent = () => {
+	const [obj, setObj] = useState({ a: 10, b: 30, c: 50 });
 
-export const MyComponent = (props) => {
-	let obj1 = { a: 10 };
-	obj1.a = 20; // Mutation
+	//obj.a = 23; is not possible in react!!
 
-	const obj2 = obj1;
-
-	obj1 = { a: 20 };
-
-	console.log(obj1 === obj2); // False
-	const [currentDate, setCurrenDate] = useState();
-
-	setTimeout(() => {
-		setCurrenDate(Math.random());
-	}, 1000);
 	return (
 		<>
-			MyComponent value: {props.value} types: {props.type}
+			<button
+				onClick={(e) => {
+					setObj({ ...obj, a: e.clientX });
+				}}
+			>
+				Set Value
+			</button>
 			<br />
-			Current time: {currentDate}
+			Obj: {JSON.stringify(obj)}
 			<br />
 		</>
 	);
-};
-
-MyComponent.propTypes = {
-	type: PropTypes.string.isRequired,
-	value: PropTypes.string.isRequired,
 };
