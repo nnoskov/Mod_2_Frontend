@@ -20,7 +20,16 @@ import { useState } from 'react';
 // }
 
 export const MyComponent = (props) => {
-	const [currentDate, setCurrenDate] = useState(Math.random());
+	let obj1 = { a: 10 };
+	obj1.a = 20; // Mutation
+
+	const obj2 = obj1;
+
+	obj1 = { a: 20 };
+
+	console.log(obj1 === obj2); // False
+	const [currentDate, setCurrenDate] = useState();
+
 	setTimeout(() => {
 		setCurrenDate(Math.random());
 	}, 1000);
