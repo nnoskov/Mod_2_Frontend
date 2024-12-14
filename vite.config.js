@@ -12,4 +12,9 @@ const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'));
 export default defineConfig({
 	base: `/${packageJson.name}/`,
 	plugins: [react(), svgr()],
+	css: {
+		modules: {
+			localsConvention: 'camelCase',
+		},
+	},
 });
