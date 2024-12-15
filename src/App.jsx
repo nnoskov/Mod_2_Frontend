@@ -1,65 +1,22 @@
-import { useState } from 'react';
-import style from './App.module.css';
+import { Task_1 } from './Components/Task_1/Task_1';
+import { Task_3 } from './Components/Task_3/Task_3';
+import { NavBar } from './Components/NavBar/NavBar';
+import { BrowserRouter as Router, Route, Routes } from 'react-router';
 
 export const App = () => {
-	const [input, setInput] = useState('');
-	const [isResult, setIsResult] = useState(false);
-
-	const buttons = [
-		{ label: '1', value: '1' },
-		{ label: '2', value: '2' },
-		{ label: '3', value: '3' },
-		{ label: '4', value: '4' },
-		{ label: '5', value: '5' },
-		{ label: '6', value: '6' },
-		{ label: '7', value: '7' },
-		{ label: '8', value: '8' },
-		{ label: '9', value: '9' },
-		{ label: '0', value: '0' },
-		{ label: '+', value: '+' },
-		{ label: '-', value: '-' },
-		{ label: 'C', value: 'C' },
-		{ label: '=', value: '=' },
-	];
-
-	const handleButtonClick = (value) => {
-		if (value === '=') {
-			handleCalculate();
-		} else if (value === 'C') {
-			handleClear();
-		} else {
-			setInput((prev) => prev + value);
-			setIsResult(false);
-		}
-	};
-
-	const handleClear = () => {
-		setInput('');
-	};
-
-	const handleCalculate = () => {
-		try {
-			setInput(eval(input));
-		} catch (error) {
-			console.error(error);
-			setInput('Error');
-		} finally {
-			setIsResult(true);
-		}
-	};
-
 	return (
-		<div className={style.calculator}>
-			<div className={style.display}>
-				<div className={isResult ? style.result : style.expression}>{input}</div>
-			</div>
-			<div className={style.buttons}>
-				{buttons.map(({ label, value }) => (
-					<button key={value} onClick={() => handleButtonClick(value)}>
-						{label}
-					</button>
-				))}
-			</div>
-		</div>
+		<>
+			<Router>
+				<div>
+					<NavBar />
+					<Routes>
+						<Route path="task_1" element={<Task_1 />} />
+						<Route path="task_2" element={<></>} />
+						<Route path="task_3" element={<Task_3 />} />
+						<Route path="*" element={<p>Path not resolved</p>} />
+					</Routes>
+				</div>
+			</Router>
+		</>
 	);
 };
