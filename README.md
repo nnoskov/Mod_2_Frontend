@@ -1,10 +1,3 @@
-# React + Vite + GitHub Pages
+# Lesson - Components of Result.University
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules. Also github-page packages has been added for easier deploy a project.
-
-[Deploy of this project](https://nnoskov.github.io/vite-project/)
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+[Deploy of tasks #1~#3](https://nnoskov.github.io/Mod_2_Frontend/)
