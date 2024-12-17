@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import style from './Task_1.module.css';
+import styles from './Task_1.module.css';
 
 export const Task_1 = () => {
 	const [value, setValue] = useState('');
@@ -14,21 +14,29 @@ export const Task_1 = () => {
 		currentValue,
 		buttonContainer,
 		button,
+		buttonRemove,
 		listContainer,
 		listHeading,
 		listItem,
-	} = style;
+	} = styles;
 
 	const onInputButtonClick = () => {
-		const promtValue = prompt('Введите значение');
-		const invalidValue = promtValue?.length < 3;
+		const answer = prompt('Введите значение');
+		if (!answer) return;
+		const invalidValue = answer.length < 3;
 
-		if (invalidValue) setError('Введенное значение должно содержать минимум 3 символа');
+		let errorMessage = '';
+		if (invalidValue)
+			errorMessage = 'Введенное значение должно содержать минимум 3 символа';
 		else {
-			setError('');
-			setValue(promtValue);
+			setValue(answer);
 		}
+		setError(errorMessage);
 		setIsValueValid(!invalidValue);
+	};
+
+	const onRemoveClick = (id) => {
+		setList(list.filter((item) => item.id !== id));
 	};
 
 	const onAddButtonClick = (value) => {
@@ -48,7 +56,7 @@ export const Task_1 = () => {
 				Текущее значение:
 				<output className={currentValue}>&nbsp;&quot;{value}&quot;</output>
 			</p>
-			{error !== '' ? <div className={style.error}>{error}</div> : ''}
+			{error !== '' ? <div className={styles.error}>{error}</div> : ''}
 			<div className={buttonContainer}>
 				<button className={button} onClick={onInputButtonClick}>
 					Ввести новое
@@ -66,10 +74,13 @@ export const Task_1 = () => {
 				{!list.length ? (
 					<p className={noMarginText}>Нет добавленных элементов</p>
 				) : (
-					<ul className={style.list}>
+					<ul className={styles.list}>
 						{list.map((item) => (
 							<li className={listItem} key={item.id}>
 								{item.value}
+								<button className={buttonRemove} onClick={() => onRemoveClick(item.id)}>
+									x
+								</button>
 							</li>
 						))}
 					</ul>

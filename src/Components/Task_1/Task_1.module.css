@@ -89,3 +89,11 @@ code {
 .listItem:not(:last-child) {
 	margin-bottom: 0.5em;
 }
+
+.buttonRemove {
+	background: transparent;
+	border: none;
+	color: red;
+	outline: none;
+	cursor: pointer;
+}
