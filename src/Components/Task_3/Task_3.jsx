@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import style from './Task_3.module.css';
+import styles from './Task_3.module.css';
 
 export const Task_3 = () => {
 	const [input, setInput] = useState('');
@@ -49,13 +49,17 @@ export const Task_3 = () => {
 	};
 
 	return (
-		<div className={style.calculator}>
-			<div className={style.display}>
-				<div className={isResult ? style.result : style.expression}>{input}</div>
+		<div className={styles.calculator}>
+			<div className={styles.display}>
+				<div className={isResult ? styles.result : styles.expression}>{input}</div>
 			</div>
-			<div className={style.buttons}>
+			<div className={styles.buttons}>
 				{buttons.map(({ label, value }) => (
-					<button key={value} onClick={() => handleButtonClick(value)}>
+					<button
+						key={value}
+						className={styles.button}
+						onClick={() => handleButtonClick(value)}
+					>
 						{label}
 					</button>
 				))}
