@@ -1,20 +1,34 @@
-import { Link } from 'react-router';
+import { NavLink, useNavigate } from 'react-router';
+import { useState } from 'react';
 import './NavBar.css';
 
 const base = import.meta.env.BASE_URL;
 
 export const NavBar = () => {
+	const [selectedLesson, setSelectedLesson] = useState('lesson1');
+	const navigate = useNavigate();
+
+	const handleChange = (event) => {
+		setSelectedLesson(event.target.value);
+		navigate(`${base}`);
+	};
+
 	return (
 		<nav>
+			<select id="dropdown" value={selectedLesson} onChange={handleChange}>
+				<option value="lesson1">Lesson 1</option>
+				<option value="lesson2">Lesson 2</option>
+				<option value="lesson3">Lesson 3</option>
+			</select>
 			<ul>
 				<li>
-					<Link to={`${base}task_1`}>Task #1</Link>
+					<NavLink to={{ pathname: `${base}${selectedLesson}/task_1` }}>Task #1</NavLink>
 				</li>
 				<li>
-					<Link to={`${base}task_2`}>Task #2</Link>
+					<NavLink to={{ pathname: `${base}${selectedLesson}/task_2` }}>Task #2</NavLink>
 				</li>
 				<li>
-					<Link to={`${base}task_3`}>Task #3</Link>
+					<NavLink to={{ pathname: `${base}${selectedLesson}/task_3` }}>Task #3</NavLink>
 				</li>
 			</ul>
 		</nav>
