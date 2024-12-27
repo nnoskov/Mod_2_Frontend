@@ -1,3 +1,3 @@
-export const EmptyTask = ({ currentLessonId }) => {
-	return <>{currentLessonId} </>;
-};
+export function EmptyTask() {
+	return <> </>;
+}

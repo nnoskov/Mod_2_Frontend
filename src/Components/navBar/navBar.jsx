@@ -1,6 +1,6 @@
 import { NavLink, useNavigate } from 'react-router';
 import { useState } from 'react';
-import './NavBar.css';
+import './navBar.css';
 
 const base = import.meta.env.BASE_URL;
 
