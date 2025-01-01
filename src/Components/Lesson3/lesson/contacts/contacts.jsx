@@ -5,9 +5,7 @@ import { Label } from '../label/label';
 export function Contacts({ email, phone }) {
 	return (
 		<div>
-			<Label title="" color="orange">
-				Contacts
-			</Label>
+			<Label color="orange">Contacts</Label>
 			{/* <Label title="Contacts" color="orange" /> */}
 			{/* <label className={styles.contactsLabel}>Contacts:</label> */}
 			<div>E-mail: {email}</div>

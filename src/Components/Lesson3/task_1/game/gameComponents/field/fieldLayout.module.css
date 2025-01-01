@@ -1,0 +1,10 @@
+.cellFields {
+	display: grid;
+	grid-template-columns: repeat(3, 100px);
+}
+
+.button {
+	width: 100px;
+	height: 100px;
+	font-size: 24px;
+}

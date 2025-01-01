@@ -30,6 +30,11 @@ export const NavBar = () => {
 				<li>
 					<NavLink to={{ pathname: `${base}${selectedLesson}/task_3` }}>Task #3</NavLink>
 				</li>
+				<li>
+					<NavLink to={{ pathname: `${base}${selectedLesson}/lesson` }}>
+						Data of Lesson
+					</NavLink>
+				</li>
 			</ul>
 		</nav>
 	);

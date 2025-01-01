@@ -1,0 +1,20 @@
+.game {
+	display: flex;
+	flex-direction: column;
+	max-width: 300px;
+	min-width: 300px;
+	margin: 0 auto;
+	padding: 0.77rem;
+	/* align-items: center; */
+}
+
+.h2 {
+	text-align: center;
+}
+
+.button {
+	height: 2.92rem;
+	font-size: large;
+	font: bold;
+	color: rgb(37, 37, 37);
+}

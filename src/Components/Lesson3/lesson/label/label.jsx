@@ -6,6 +6,6 @@ export function Label({ color, children }) {
 }
 
 Label.propTypes = {
-	children: PropTypes.string,
+	children: PropTypes.node,
 	color: PropTypes.string,
 };
