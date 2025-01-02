@@ -1,5 +1,5 @@
 import { PLAYER_ACTION, PLAYER_NAME, STATUS, PLAYER } from '../../constants';
-import InformationLayout from './information-layout';
+import { InformationLayout } from './information-layout';
 import { PropTypes } from 'prop-types';
 export const Information = ({ status, currentPlayer }) => {
 	const playerAction = PLAYER_ACTION[status];

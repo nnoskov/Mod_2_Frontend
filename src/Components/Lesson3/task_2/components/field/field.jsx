@@ -1,5 +1,5 @@
 import { PLAYER } from '../../constants';
-import FieldLayout from './field-layout';
+import { FieldLayout } from './field-layout';
 import { PropTypes } from 'prop-types';
 export const Field = ({ field, onCellClick }) => {
 	return <FieldLayout field={field} onCellClick={onCellClick} />;
