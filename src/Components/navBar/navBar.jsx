@@ -19,6 +19,7 @@ export const NavBar = () => {
 				<option value="lesson1">Lesson 1</option>
 				<option value="lesson2">Lesson 2</option>
 				<option value="lesson3">Lesson 3</option>
+				<option value="lesson4">Lesson 4</option>
 			</select>
 			<ul>
 				<li>

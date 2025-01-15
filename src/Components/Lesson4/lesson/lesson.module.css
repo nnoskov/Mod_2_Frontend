@@ -1,0 +1,33 @@
+.lesson {
+	padding: 1rem;
+	display: flex;
+	flex-direction: column;
+	max-width: 900px;
+	margin: auto;
+}
+
+.input {
+	height: 2rem;
+	border-radius: 10px;
+}
+
+.content {
+	display: none;
+}
+
+input[type="checkbox"]:checked+.content {
+	display: block;
+}
+
+.form input {
+	height: 2rem;
+}
+
+.form button {
+	height: 2rem;
+}
+
+.formLabel {
+	height: 26px;
+	margin: 1rem;
+}

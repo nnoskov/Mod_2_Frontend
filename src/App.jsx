@@ -4,7 +4,8 @@ import { Task_3 as Task_3_lesson_2 } from './Components/Lesson2/Task_3/Task_3';
 import { NavBar } from './Components/navBar/navBar';
 import { EmptyTask } from './Components/EmptyTask/EmptyTask';
 import { BrowserRouter as Router, Route, Routes } from 'react-router';
-import { Lesson } from './Components/Lesson3/lesson/lesson';
+import { Lesson as Lesson_3 } from './Components/Lesson3/lesson/lesson';
+import { Lesson_4 } from './Components/Lesson4/lesson/lesson';
 import { Task_1 as Task_1_lesson_3 } from './Components/Lesson3/task_1/task_1';
 import { Task_2 as Task_2_lesson_3 } from './Components/Lesson3/task_2/task-2';
 
@@ -20,9 +21,10 @@ export const App = () => {
 						<Route path={`${base}lesson2/task_1`} element={<Task_1_lesson_2 />} />
 						<Route path={`${base}lesson2/task_2`} element={<Task_2_lesson_2 />} />
 						<Route path={`${base}lesson2/task_3`} element={<Task_3_lesson_2 />} />
-						<Route path={`${base}lesson3/lesson`} element={<Lesson />} />
+						<Route path={`${base}lesson3/lesson`} element={<Lesson_3 />} />
 						<Route path={`${base}lesson3/task_1`} element={<Task_1_lesson_3 />} />
 						<Route path={`${base}lesson3/task_2`} element={<Task_2_lesson_3 />} />
+						<Route path={`${base}lesson4/lesson`} element={<Lesson_4 />} />
 						<Route path="*" element={<EmptyTask />} />
 					</Routes>
 				</div>
