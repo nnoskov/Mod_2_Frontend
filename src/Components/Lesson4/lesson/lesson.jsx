@@ -1,32 +1,59 @@
 import styles from './lesson.module.css';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
+import * as yup from 'yup';
 
+const sendFormData = (formData) => {
+	console.log(formData);
+};
+
+const loginChangeScheme = yup
+	.string()
+	.matches(
+		/^[\w_]*$/,
+		'Incorrect login. Accessible symbols is numbers, letters and underscore. ',
+	)
+	.max(20, '20 symbols only');
+
+const loginBlurScheme = yup.string().min(3, 'More then 3 symbols');
+
+const validateAndGetErrorMessage = (scheme, value) => {
+	let errorMessage = null;
+	try {
+		scheme.validateSync(value, { abortEarly: false });
+	} catch ({ errors }) {
+		console.log(errors);
+		errorMessage = errors.join(`\n`);
+	}
+	console.log(errorMessage);
+	return errorMessage;
+};
 export const Lesson_4 = () => {
 	const [login, setLogin] = useState('');
 	const [loginError, setLoginError] = useState(null);
 
+	const submitButtonRef = useRef(null);
+
 	const onLoginChange = ({ target }) => {
 		setLogin(target.value);
 
-		let error = null;
+		const newError = validateAndGetErrorMessage(loginChangeScheme, target.value);
+		console.log(newError);
+		setLoginError(newError);
 
-		if (!/^[\w_]*$/.test(target.value)) {
-			error = 'Incorrect login. Accessible symbols is numbers, letters and underscore. ';
-		} else if (target.value.length > 20) {
-			error = '20 symbols only';
+		if (target.value.length === 20) {
+			console.log(submitButtonRef);
+			submitButtonRef.current.focus();
 		}
-		setLoginError(error);
+	};
+
+	const onLoginBlur = ({ target }) => {
+		const newError = validateAndGetErrorMessage(loginBlurScheme, target.value);
+		setLoginError(newError);
 	};
 
 	const onSubmit = (event) => {
 		event.preventDefault();
-		console.log(login);
-	};
-
-	const onBlur = () => {
-		if (login.length < 3) {
-			setLoginError('More then 3 symbols');
-		}
+		sendFormData({ login });
 	};
 
 	return (
@@ -39,9 +66,9 @@ export const Lesson_4 = () => {
 					value={login}
 					placeholder="Login"
 					onChange={onLoginChange}
-					onBlur={onBlur}
-				></input>
-				<button type="submit" disabled={loginError !== null}>
+					// onBlur={onLoginBlur}
+				/>
+				<button ref={submitButtonRef} type="submit" disabled={!!loginError}>
 					Send
 				</button>
 			</form>
