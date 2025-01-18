@@ -31,3 +31,8 @@ input[type="checkbox"]:checked+.content {
 	height: 26px;
 	margin: 1rem;
 }
+
+.errorLabel {
+	color: red;
+	font-size: 0.9rem;
+}
