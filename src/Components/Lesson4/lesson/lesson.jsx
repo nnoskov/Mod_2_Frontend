@@ -1,26 +1,38 @@
 import styles from './lesson.module.css';
-import { useState, useRef } from 'react';
+import { useForm } from 'react-hook-form';
 
 export const Lesson_4 = () => {
-	const [stateCounter, setStateCounter] = useState(0);
-	const refCounter = useRef(0);
+	const {
+		register,
+		handleSubmit,
+		formState: { errors },
+	} = useForm({
+		defaultValues: {
+			login: '',
+		},
+	});
 
-	function incrementRefCounter() {
-		refCounter.current += 1;
-		console.log('refCounter', refCounter.current);
-	}
+	const loginProps = {
+		minLength: { value: 3, message: 'Only more than 3 characters' },
+		maxLength: { value: 20, message: 'Only less than 20 characters' },
+		pattern: { value: /^[\w_]*$/, message: 'Incorrect characters is presence' },
+	};
 
-	function incrementStateCounter() {
-		setStateCounter(stateCounter + 1);
-		console.log('stateCounter', stateCounter + 1);
-	}
+	const loginError = errors.login?.message;
+
+	const onSubmit = (formData) => {
+		console.log(formData);
+	};
 
 	return (
 		<div className={styles.lesson}>
-			<p>refCounter: {refCounter.current}</p>
-			<button onClick={incrementRefCounter}>Add refCounter</button>
-			<p>stateCounter: {stateCounter}</p>
-			<button onClick={incrementStateCounter}>Add stateCounter</button>
+			<form onSubmit={handleSubmit(onSubmit)}>
+				{loginError && <div className={styles.errorLabel}>{loginError}</div>}
+				<input name="login" type="text" {...register('login', loginProps)} />
+				<button type="submit" disabled={!!loginError}>
+					Send
+				</button>
+			</form>
 		</div>
 	);
 };
