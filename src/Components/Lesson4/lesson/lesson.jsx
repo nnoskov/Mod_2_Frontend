@@ -1,5 +1,15 @@
 import styles from './lesson.module.css';
+import * as yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
+
+const fieldsScheme = yup.object().shape({
+	login: yup
+		.string()
+		.matches(/^[\w_]*$/, 'Incorrect characters is presence')
+		.max(20, 'Only less than 20 characters')
+		.min(3, 'Only more than 3 characters'),
+});
 
 export const Lesson_4 = () => {
 	const {
@@ -10,13 +20,8 @@ export const Lesson_4 = () => {
 		defaultValues: {
 			login: '',
 		},
+		resolver: yupResolver(fieldsScheme),
 	});
-
-	const loginProps = {
-		minLength: { value: 3, message: 'Only more than 3 characters' },
-		maxLength: { value: 20, message: 'Only less than 20 characters' },
-		pattern: { value: /^[\w_]*$/, message: 'Incorrect characters is presence' },
-	};
 
 	const loginError = errors.login?.message;
 
@@ -28,7 +33,7 @@ export const Lesson_4 = () => {
 		<div className={styles.lesson}>
 			<form onSubmit={handleSubmit(onSubmit)}>
 				{loginError && <div className={styles.errorLabel}>{loginError}</div>}
-				<input name="login" type="text" {...register('login', loginProps)} />
+				<input name="login" type="text" {...register('login')} />
 				<button type="submit" disabled={!!loginError}>
 					Send
 				</button>
